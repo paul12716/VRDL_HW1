@@ -40,6 +40,10 @@ After preprocessing, we use dataloader with batch_size=128 to feed training_data
 
 ### Train our model
 
+```bach
+python Train.py
+```
+
 We use resnet-50 as backbone network, and modify the last fully connected layer's output dimension to 196.  
 196 is the total class numbers of our training_data.  
 ```python
@@ -53,6 +57,10 @@ Set learning rate=0.01.
 The model parameters would be saved in folder model_196/
 
 ## Test accuracy by running Test.py and uploading to kaggle competition
+
+```bach
+python Test.py
+```
 
 For testing data, we first make a inverse dictionary that correspond a int to a car's class name.  
 For example : 108 correspond to Ford F-150 Regular Cab 2007.  
