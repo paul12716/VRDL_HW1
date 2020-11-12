@@ -23,7 +23,24 @@ download training_data, testing_data and training_labels.csv
 
 ## Train model by running Train.py
 
-In Train.py, we preprocess the image by 
+In Train.py, we preprocess the data and train our model.
+
+### Data preprocess
+
+We first read training_labels.csv to make a dictionary that correspond car's classes name to a simple int.  
+For example : Ford F-150 Regular Cab 2007 correspond to 108.  
+
+Then we do image preprocessing in the following order.
+- Resize to 512*512
+- Normalize
+- Random crop 448*448
+- RandomHorizontalFlip
+
+After preprocessing, we use dataloader with batch_size=128 to feed training_data into our model.
+
+### Train our model
+
+We use resnet-50 as backbone network.
 
 ## Test accuracy by running Test.py and uploading to kaggle competition
 use simple resnet-50
