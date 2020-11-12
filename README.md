@@ -21,7 +21,11 @@ data line : https://drive.google.com/drive/folders/19uUnd4669ljpPreAQx3e7KiD5LY8
 
 download training_data, testing_data and training_labels.csv
 
+## Train model by running Train.py
 
+In Train.py, we preprocess the image by 
+
+## Test accuracy by running Test.py and uploading to kaggle competition
 use simple resnet-50
 modify the last layer to 196 output dimensions
 
