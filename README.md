@@ -32,9 +32,9 @@ For example : Ford F-150 Regular Cab 2007 correspond to 108.
 
 Then we do image preprocessing in the following order.
 - Resize to 512*512
-- Normalize
 - Random crop 448*448
 - RandomHorizontalFlip
+- Normalize
 
 After preprocessing, we use dataloader with batch_size=128 to feed training_data into our model.
 
@@ -48,12 +48,23 @@ model_in_feature = model.fc.in_features
 model.fc = nn.Linear(model_in_feature, 196)
 ```
 
+We use CrossEntropy as loss function and SGD optimizer, and save model parameters every 10 epochs in total 100 epochs.  
+Set learning rate=0.01.  
+The model parameters would be saved in folder model_196/
+
 ## Test accuracy by running Test.py and uploading to kaggle competition
-use simple resnet-50
-modify the last layer to 196 output dimensions
 
-run Train.py and save model in model_196/
+For testing data, we first make a inverse dictionary that correspond int to car's classes name.  
+For example : 108 correspond to Ford F-150 Regular Cab 2007.  
+Then we import the saved model.
+```python
+model = models.resnet50(pretrained=True)
+model_in_feature = model.fc.in_features
+model.fc = nn.Linear(model_in_feature, 196)
+model.load_state_dict(torch.load('model_196/save_100.pt'))
+```
 
-run Test.py and get Test.csv as predicted result
-
-Best accuracy : 0.92880
+For each testing image, we resize it to 512*512, CenterCrop it by 448*448 and normalize it.  
+In the end, write image id and predicted result to Test.csv.  
+Upload it to kaggle competition.  
+Best accuracy : 0.92880.
