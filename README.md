@@ -27,7 +27,7 @@ In Train.py, we preprocess the data and train our model.
 
 ### Data preprocess
 
-We first read training_labels.csv to make a dictionary that correspond car's classes name to a simple int.  
+We first read training_labels.csv to make a dictionary that correspond a car's class name to a simple int.  
 For example : Ford F-150 Regular Cab 2007 correspond to 108.  
 
 Then we do image preprocessing in the following order.
@@ -54,7 +54,7 @@ The model parameters would be saved in folder model_196/
 
 ## Test accuracy by running Test.py and uploading to kaggle competition
 
-For testing data, we first make a inverse dictionary that correspond int to car's classes name.  
+For testing data, we first make a inverse dictionary that correspond a int to a car's class name.  
 For example : 108 correspond to Ford F-150 Regular Cab 2007.  
 Then we import the saved model.
 ```python
