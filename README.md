@@ -40,7 +40,13 @@ After preprocessing, we use dataloader with batch_size=128 to feed training_data
 
 ### Train our model
 
-We use resnet-50 as backbone network.
+We use resnet-50 as backbone network, and modify the last fully connected layer's output dimension to 196.  
+196 is the total class numbers of our training_data.  
+```python
+model = models.resnet50(pretrained=True)
+model_in_feature = model.fc.in_features
+model.fc = nn.Linear(model_in_feature, 196)
+```
 
 ## Test accuracy by running Test.py and uploading to kaggle competition
 use simple resnet-50
