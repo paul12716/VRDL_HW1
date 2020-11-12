@@ -64,7 +64,7 @@ model.fc = nn.Linear(model_in_feature, 196)
 model.load_state_dict(torch.load('model_196/save_100.pt'))
 ```
 
-For each testing image, we resize it to 512*512, CenterCrop it by 448*448 and normalize it.  
+For each testing image, we resize it to 512 * 512, CenterCrop it by 448 * 448 and normalize it.  
 In the end, write image id and predicted result to Test.csv.  
 Upload it to kaggle competition.  
 Best accuracy : 0.92880.
